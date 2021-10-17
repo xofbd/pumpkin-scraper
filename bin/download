@@ -1,0 +1,3 @@
+#!/bin/bash
+
+scrapy crawl pumpkin -a search_term="$1"

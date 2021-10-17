@@ -1,0 +1,4 @@
+.make.*
+__pycache__
+songs
+venv
