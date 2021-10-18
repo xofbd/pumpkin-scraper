@@ -8,9 +8,6 @@ poetry.lock: pyproject.toml
 requirements.txt: poetry.lock
 	poetry export --without-hashes -f requirements.txt -o $@
 
-scrapy.cfg: scrapy.cfg.example
-	cp $^ $@
-
 .make.install: poetry.lock
 	poetry install
 	touch $@
