@@ -1,0 +1,5 @@
+*
+!bin/download
+!pumpkin
+!requirements.txt
+!scrapy.cfg
