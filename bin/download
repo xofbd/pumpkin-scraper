@@ -1,3 +1,19 @@
 #!/bin/bash
 
-scrapy crawl pumpkin -a search_term="$1"
+set -eu
+
+help() {
+    echo "Usage: $0 SEARCH-TERM"
+}
+
+main() {
+    if [[ "$1" == "--help" || "$1" == "-h" ]]; then
+	help
+	exit 0
+    fi
+
+    scrapy crawl pumpkin -a search_term="$1"
+}
+
+
+main "$1"
