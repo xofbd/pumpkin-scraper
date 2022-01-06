@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -eu
+
+main() {
+    local output
+    output=$(aspell --extra-dicts ./.aspell.en.pws -M list < README.md)
+
+    if [[ $(echo $output | wc -l) -gt 1 ]]; then
+	echo "Misspelled words:"
+	echo $output
+	exit 1
+    else
+	exit 0
+    fi
+}
+
+
+main
