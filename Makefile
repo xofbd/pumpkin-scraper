@@ -1,4 +1,6 @@
+POETRY_RUN := poetry run
 docker_image := pumpkin
+
 
 .PHONY: all
 all: clean install
@@ -27,6 +29,11 @@ docker-image:
 		--build-arg USER_ID=$$(id -u) \
 		--build-arg GROUP_ID=$$(id -g) \
 		.
+
+# Testing
+.PHONY: test-lint
+test-lint:
+	$(POETRY_RUN) flake8 pumpkin
 
 # Utility
 .PHONY: clean
