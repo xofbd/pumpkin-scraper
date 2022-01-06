@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -eu
+
+main() {
+    local envs    
+    envs=$(poetry env list | grep -oP "^\S+")
+
+    for env in $envs; do
+	poetry env remove $env
+    done    
+}
+
+
+main

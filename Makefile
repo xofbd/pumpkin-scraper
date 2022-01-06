@@ -63,3 +63,4 @@ test-spelling:
 clean:
 	find . | grep __pycache__ | xargs rm -rf
 	rm -f .make.*
+	bin/remove-envs
