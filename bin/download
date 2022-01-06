@@ -2,18 +2,32 @@
 
 set -eu
 
-help() {
-    echo "Usage: $0 SEARCH-TERM"
+usage() {
+    echo "usage: $0 [-h] search_term"
 }
 
 main() {
-    if [[ "$1" == "--help" || "$1" == "-h" ]]; then
-	help
-	exit 0
+    while getopts "h help" option; do
+	case "$option" in
+	    h)
+		usage
+		exit 0;;
+	    \?)
+		usage 1>&2
+		exit 1;;
+	esac
+    done
+
+    shift "$(($OPTIND -1))"
+
+    if [[ "$#" -ne 1 ]]; then
+	echo "$0 only accepts one positional argument, $# were given"
+	usage
+	exit 1
     fi
 
     scrapy crawl pumpkin -a search_term="$1"
 }
 
 
-main "$1"
+main "$@"
