@@ -48,7 +48,11 @@ docker-image:
 
 # Testing
 .PHONY: tests
-tests: test-lint test-spelling
+tests: test-unit test-lint test-spelling
+
+.PHONY: test-unit
+test-unit: | .make.install.dev
+	$(POETRY_RUN) pytest -s tests
 
 .PHONY: test-lint
 test-lint: | .make.install.dev
@@ -64,3 +68,4 @@ clean:
 	find . | grep __pycache__ | xargs rm -rf
 	rm -f .make.*
 	bin/remove-envs
+	rm -rf .pytest_cache
