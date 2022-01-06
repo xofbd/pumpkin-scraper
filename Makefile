@@ -31,9 +31,16 @@ docker-image:
 		.
 
 # Testing
+.PHONY: tests
+tests: test-lint test-spelling
+
 .PHONY: test-lint
 test-lint:
 	$(POETRY_RUN) flake8 pumpkin
+
+.PHONY: test-spelling
+test-spelling:
+	bin/test-spelling
 
 # Utility
 .PHONY: clean
