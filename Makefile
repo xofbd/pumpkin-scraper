@@ -62,6 +62,10 @@ test-lint: | .make.install.dev
 test-spelling:
 	bin/test-spelling
 
+.PHONY: tox
+tox: | .make.install.dev
+	$(POETRY_RUN) tox
+
 # Utility
 .PHONY: clean
 clean:
@@ -69,3 +73,4 @@ clean:
 	rm -f .make.*
 	bin/remove-envs
 	rm -rf .pytest_cache
+	rm -rf .tox
