@@ -2,7 +2,7 @@
 This projects uses the Python package [Scrapy](https://scrapy.org/) to download a chosen [The Smashing Pumpkins](https://smashingpumpkins.com/) song from the [Internet Archive](https://archive.org/). 🎃
 
 ## Prerequisites
-1. Python 3
+1. Python 3.8 or above
 1. (optional) [Poetry](https://python-poetry.org/)
 
 ## Install
