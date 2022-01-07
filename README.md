@@ -1,3 +1,7 @@
+![Python](https://shields.io/badge/Python-3.8%20%7C%203.9-blue)
+[![GitHub release](https://img.shields.io/github/v/release/xofbd/pumpkin-scraper.svg)](https://github.com/xofbd/pumpkin-scraper.svg/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+![CI](https://github.com/xofbd/pumpkin-scraper/workflows/CI/badge.svg?branch=master)
 # The Pumpkin Scraper: Searching and Scraping Songs from The Smashing Pumpkins 🎃 🔨
 This projects uses the Python package [Scrapy](https://scrapy.org/) to download a chosen [The Smashing Pumpkins](https://smashingpumpkins.com/) song from the [Internet Archive](https://archive.org/). 🎃
 
