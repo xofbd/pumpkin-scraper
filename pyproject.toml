@@ -6,7 +6,7 @@ authors = ["xofbd <dfox09@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.8"
 Scrapy = "^2.5.1"
 
 [tool.poetry.dev-dependencies]
