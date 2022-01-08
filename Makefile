@@ -4,7 +4,7 @@ docker_image := pumpkin
 reqs := requirements.txt requirements-dev.txt
 
 .PHONY: all
-all: clean install
+all: clean-all install
 
 # Virtual environments
 .make.install.prod: poetry.lock
@@ -71,6 +71,9 @@ tox: | .make.install.dev
 clean:
 	find . | grep __pycache__ | xargs rm -rf
 	rm -f .make.*
-	bin/remove-envs
 	rm -rf .pytest_cache
 	rm -rf .tox
+
+.PHONY: clean-all
+clean-all: clean
+	bin/remove-envs
