@@ -5,12 +5,12 @@ on:
     branches: ["master"]
   pull_request:
     branches: ["master"]
-  workflow_dispatch:
+  workflow_dispatch: # is this needed?
 
 jobs:
   tests:
     name: "Python ${{ matrix.python-version }}"
-    runs-on: "ubuntu-latest"
+    runs-on: "ubuntu-20.04"
     env:
       USING_COVERAGE: "3.8,3.9"
 
@@ -37,3 +37,17 @@ jobs:
 
       - name: "Run tox targets for ${{ matrix.python-version }}"
         run: "make tox"
+
+  test-spelling:
+    name: "Test Spelling"
+    runs-on: "ubuntu-20.04"
+    steps:
+      - uses: "actions/checkout@v2"
+      - uses: "actions/setup-python@v2"
+
+      - name: "Install aspell"
+        run: |
+          sudo apt-get update && sudo apt-get install aspell
+
+      - name: "Run spelling test"
+        run: "make test-spelling"
