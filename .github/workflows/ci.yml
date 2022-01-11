@@ -36,18 +36,36 @@ jobs:
           make install-dev
 
       - name: "Run tox targets for ${{ matrix.python-version }}"
-        run: "make tox"
+        run: make tox
 
   test-spelling:
     name: "Test Spelling"
     runs-on: "ubuntu-20.04"
     steps:
       - uses: "actions/checkout@v2"
-      - uses: "actions/setup-python@v2"
 
       - name: "Install aspell"
-        run: |
-          sudo apt-get update && sudo apt-get install aspell
+        run: sudo apt-get update && sudo apt-get install aspell
 
       - name: "Run spelling test"
-        run: "make test-spelling"
+        run: make test-spelling
+
+  test-linting:
+    name: "Linting"
+    runs-on: "ubuntu-20.04"
+    steps:
+      - uses: "actions/checkout@v2"
+      - uses: "actions/setup-python@v2"
+        with:
+          python-version: "3.8"
+
+      - name: "Install Poetry"
+        uses: snok/install-poetry@v1.2.0
+        with:
+          version: 1.1.12
+
+      - name: "Install dependencies"
+        run: make install-dev
+
+      - name: "Run Flake8"
+        run: make test-lint
